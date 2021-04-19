@@ -10,8 +10,14 @@
 # - name
 # - age
 
+user1 = User.create(name: Faker::Name.first_name, age: Faker::Number.between(from: 18, to: 99))
+user2 = User.create(name: Faker::Name.first_name, age: Faker::Number.between(from: 18, to: 99))
+
 # locations
 # - name
+
+location1 = Location.create(name: Faker::Movies::StarWars.planet)
+location2 = Location.create(name: Faker::Movies::StarWars.planet)
 
 # vacation
 # - t.string :title
@@ -21,8 +27,14 @@
 # - t.integer :userId
 # - t.integer :locationId
 
+vacation1 = Vacation.create(title: Faker::Book.title, date: Faker::Date.between(from: '2021-04-01', to: '2021-06-01'), day: Faker::Number.between(from: 1, to: 10), note: Faker::Food.description, user_id: 1, location_id: 1)
+vacation2 = Vacation.create(title: Faker::Book.title, date: Faker::Date.between(from: '2021-04-01', to: '2021-06-01'), day: Faker::Number.between(from: 1, to: 10), note: Faker::Food.description, user_id: 1, location_id: 2)
+
 # days
 # -t.string :name
 # t.string :forecast
 # t.string :activity
 # t.integer :vacation_id
+
+day1 = Day.create(name: "Monday", forecast: "Partly Cloudy but Warm", activity: "Mountain Biking", vacation_id: 1)
+day2 = Day.create(name: "Tuesday", forecast: "Sunny and Humid", activity: "Hiking", vacation_id: 2)
