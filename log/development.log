@@ -32,3 +32,54 @@ Migrating to CreateDays (20210419164848)
   [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6527834866411410405)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6527834866411410405)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (8.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kiesha"], ["age", 93], ["created_at", "2021-04-19 17:39:20.060045"], ["updated_at", "2021-04-19 17:39:20.060045"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Lane"], ["age", 64], ["created_at", "2021-04-19 17:39:20.074085"], ["updated_at", "2021-04-19 17:39:20.074085"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Create (15.2ms)[0m  [1m[32mINSERT INTO "locations" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Endor"], ["created_at", "2021-04-19 17:39:20.084262"], ["updated_at", "2021-04-19 17:39:20.084262"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Create (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Mygeeto"], ["created_at", "2021-04-19 17:39:20.107480"], ["updated_at", "2021-04-19 17:39:20.107480"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVacation Create (3.6ms)[0m  [1m[32mINSERT INTO "vacations" ("title", "date", "note", "user_id", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "A Catskill Eagle"], ["date", "2021-05-30 00:00:00"], ["note", "Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread."], ["user_id", 1], ["location_id", 1], ["created_at", "2021-04-19 17:39:20.258827"], ["updated_at", "2021-04-19 17:39:20.258827"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVacation Create (0.3ms)[0m  [1m[32mINSERT INTO "vacations" ("title", "date", "note", "user_id", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Edna O'Brien"], ["date", "2021-04-22 00:00:00"], ["note", "Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham."], ["user_id", 1], ["location_id", 2], ["created_at", "2021-04-19 17:39:20.269427"], ["updated_at", "2021-04-19 17:39:20.269427"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacation Load (0.3ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDay Create (10.2ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Monday"], ["forecast", "Partly Cloudy but Warm"], ["activity", "Mountain Biking"], ["vacation_id", 1], ["created_at", "2021-04-19 17:39:20.282988"], ["updated_at", "2021-04-19 17:39:20.282988"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacation Load (0.2ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDay Create (0.3ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tuesday"], ["forecast", "Sunny and Humid"], ["activity", "Hiking"], ["vacation_id", 2], ["created_at", "2021-04-19 17:39:20.300547"], ["updated_at", "2021-04-19 17:39:20.300547"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacation Load (5.6ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mLocation Load (3.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations" INNER JOIN "vacations" ON "locations"."id" = "vacations"."location_id" WHERE "vacations"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mVacation Load (0.2ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" ORDER BY "vacations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacation Load (0.4ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" ORDER BY "vacations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mDay Load (3.6ms)[0m  [1m[34mSELECT "days".* FROM "days" WHERE "days"."vacation_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["vacation_id", 1], ["LIMIT", 11]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" ORDER BY "locations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacation Load (0.4ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" ORDER BY "vacations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mVacation Load (0.3ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" ORDER BY "vacations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
