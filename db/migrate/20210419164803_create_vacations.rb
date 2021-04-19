@@ -5,8 +5,8 @@ class CreateVacations < ActiveRecord::Migration[6.1]
       t.datetime :date
       t.datetime :day
       t.string :note
-      t.integer :userId
-      t.integer :locationId
+      t.integer :user_id
+      t.integer :location_id
 
       t.timestamps
     end

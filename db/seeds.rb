@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+users
+- name
+- age
+
+locations
+- name
+
+vacation
+- t.string :title
+- t.datetime :date
+- t.datetime :day
+- t.string :note
+- t.integer :userId
+- t.integer :locationId

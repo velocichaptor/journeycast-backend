@@ -4,7 +4,7 @@ class CreateDays < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :forecast
       t.string :activity
-      t.integer :vacationId
+      t.integer :vacation_id
 
       t.timestamps
     end
