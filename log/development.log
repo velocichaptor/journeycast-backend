@@ -83,3 +83,370 @@ Migrating to CreateDays (20210419164848)
   [1m[36mVacation Load (0.4ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" ORDER BY "vacations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mVacation Load (0.3ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" ORDER BY "vacations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (299.5ms)[0m  [1m[35mCREATE DATABASE "journeycast_development" ENCODING = 'unicode'[0m
+  [1m[35m (154.2ms)[0m  [1m[35mCREATE DATABASE "journeycast_test" ENCODING = 'unicode'[0m
+  [1m[35m (22.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (19.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6527834866411410405)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210419164240)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210419164240"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLocations (20210419164519)
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.2ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210419164519"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVacations (20210419164803)
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.2ms)[0m  [1m[35mCREATE TABLE "vacations" ("id" bigserial primary key, "title" character varying, "date" timestamp, "day" timestamp, "note" character varying, "user_id" integer, "location_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210419164803"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDays (20210419164848)
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "days" ("id" bigserial primary key, "name" character varying, "forecast" character varying, "activity" character varying, "vacation_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210419164848"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-19 18:25:28.634598"], ["updated_at", "2021-04-19 18:25:28.634598"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6527834866411410405)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oliva"], ["age", 75], ["created_at", "2021-04-19 18:25:35.089717"], ["updated_at", "2021-04-19 18:25:35.089717"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kyle"], ["age", 68], ["created_at", "2021-04-19 18:25:35.095961"], ["updated_at", "2021-04-19 18:25:35.095961"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Create (0.7ms)[0m  [1m[32mINSERT INTO "locations" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cantonica"], ["created_at", "2021-04-19 18:25:35.110491"], ["updated_at", "2021-04-19 18:25:35.110491"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Create (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cantonica"], ["created_at", "2021-04-19 18:25:35.121590"], ["updated_at", "2021-04-19 18:25:35.121590"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVacation Create (0.8ms)[0m  [1m[32mINSERT INTO "vacations" ("title", "date", "note", "user_id", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "A Time to Kill"], ["date", "2021-05-09 00:00:00"], ["note", "Fresh parsley, Italian sausage, shallots, garlic, sun-dried tomatoes and mozzarella cheese in an all-butter crust. With a side of mixed fruits."], ["user_id", 1], ["location_id", 1], ["created_at", "2021-04-19 18:25:35.171784"], ["updated_at", "2021-04-19 18:25:35.171784"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVacation Create (0.3ms)[0m  [1m[32mINSERT INTO "vacations" ("title", "date", "note", "user_id", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "A Summer Bird-Cage"], ["date", "2021-04-24 00:00:00"], ["note", "Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham."], ["user_id", 1], ["location_id", 2], ["created_at", "2021-04-19 18:25:35.187113"], ["updated_at", "2021-04-19 18:25:35.187113"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacation Load (0.3ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDay Create (0.6ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Monday"], ["forecast", "Partly Cloudy but Warm"], ["activity", "Mountain Biking"], ["vacation_id", 1], ["created_at", "2021-04-19 18:25:35.207845"], ["updated_at", "2021-04-19 18:25:35.207845"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacation Load (0.2ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDay Create (0.3ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tuesday"], ["forecast", "Sunny and Humid"], ["activity", "Hiking"], ["vacation_id", 2], ["created_at", "2021-04-19 18:25:35.220125"], ["updated_at", "2021-04-19 18:25:35.220125"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2021-04-20 12:57:30 -0400
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/bleakchandler/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/bleakchandler/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 35.7ms | Allocations: 480)
+Completed 200 OK in 160ms (Views: 75.5ms | ActiveRecord: 0.0ms | Allocations: 4151)
+
+
+Started GET "/" for ::1 at 2021-04-20 12:57:30 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/bleakchandler/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/bleakchandler/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.9ms | Allocations: 211)
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 891)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-04-20 12:57:31 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/users" for ::1 at 2021-04-20 12:57:52 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (15.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 58ms (Views: 16.0ms | ActiveRecord: 26.5ms | Allocations: 6113)
+
+
+Started GET "/users" for ::1 at 2021-04-20 12:59:48 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 30ms (Views: 8.6ms | ActiveRecord: 5.5ms | Allocations: 8080)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-04-20 12:59:49 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/gifs?q=dogs" for ::1 at 2021-04-20 13:04:57 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/gifs"):
+  
+Started GET "/gifs?q=dogs" for ::1 at 2021-04-20 13:04:57 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/gifs"):
+  
+Started GET "/gifs?q=dogs" for ::1 at 2021-04-20 13:04:57 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/gifs"):
+  
+Started GET "/users" for ::1 at 2021-04-20 13:05:05 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.3ms | Allocations: 958)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:05:05 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:05:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.6ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:05:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.7ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:05:35 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 41ms (Views: 40.4ms | ActiveRecord: 0.3ms | Allocations: 798)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:06:23 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 27.9ms | ActiveRecord: 0.3ms | Allocations: 804)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:06:23 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.7ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:06:32 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.4ms | Allocations: 801)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:06:38 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:06:56 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:07:11 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.8ms | Allocations: 779)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:09:59 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:10:48 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:11:32 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:12:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 1.2ms | Allocations: 783)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:17:21 -0400
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 37ms (Views: 8.8ms | ActiveRecord: 12.8ms | Allocations: 8080)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:17:38 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 803)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:25:07 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 27ms (Views: 8.4ms | ActiveRecord: 4.8ms | Allocations: 8082)
+
+
+Started GET "/users" for ::1 at 2021-04-20 13:25:27 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 1.1ms | Allocations: 804)
+
+
+Started GET "/" for ::1 at 2021-04-20 13:26:05 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/bleakchandler/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/bleakchandler/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.5ms | Allocations: 315)
+Completed 200 OK in 32ms (Views: 17.6ms | ActiveRecord: 0.0ms | Allocations: 2447)
+
+
+Started GET "/all" for ::1 at 2021-04-20 13:26:09 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/all"):
+  
+Started GET "/vacations" for ::1 at 2021-04-20 13:27:50 -0400
+Processing by VacationsController#index as HTML
+  [1m[36mVacation Load (17.8ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations"[0m
+  ↳ app/controllers/vacations_controller.rb:4:in `index'
+Completed 200 OK in 46ms (Views: 14.6ms | ActiveRecord: 20.8ms | Allocations: 7563)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (13.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (93.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeycast_development"[0m
+  [1m[35m (54.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "journeycast_test"[0m
+  [1m[35m (297.2ms)[0m  [1m[35mCREATE DATABASE "journeycast_development" ENCODING = 'unicode'[0m
+  [1m[35m (99.7ms)[0m  [1m[35mCREATE DATABASE "journeycast_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "days" CASCADE[0m
+  [1m[35m (21.2ms)[0m  [1m[35mCREATE TABLE "days" ("id" bigserial primary key, "name" character varying, "forecast" character varying, "activity" character varying, "vacation_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "locations" CASCADE[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "vacations" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "vacations" ("id" bigserial primary key, "title" character varying, "date" timestamp, "day" timestamp, "note" character varying, "user_id" integer, "location_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210419164848)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210419164240),
+(20210419164519),
+(20210419164803);
+
+[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (6.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-20 17:28:57.265414"], ["updated_at", "2021-04-20 17:28:57.265414"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "d17fb905ff23095b3018b80f17033600dfccaaed"], ["created_at", "2021-04-20 17:28:57.282153"], ["updated_at", "2021-04-20 17:28:57.282153"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "days" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "days" ("id" bigserial primary key, "name" character varying, "forecast" character varying, "activity" character varying, "vacation_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "locations" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "locations" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "vacations" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "vacations" ("id" bigserial primary key, "title" character varying, "date" timestamp, "day" timestamp, "note" character varying, "user_id" integer, "location_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210419164848)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210419164240),
+(20210419164519),
+(20210419164803);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-20 17:28:57.407027"], ["updated_at", "2021-04-20 17:28:57.407027"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (2.0ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-04-20 17:28:57.412624"], ["key", "environment"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "d17fb905ff23095b3018b80f17033600dfccaaed"], ["created_at", "2021-04-20 17:28:57.422961"], ["updated_at", "2021-04-20 17:28:57.422961"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Terisa"], ["age", 91], ["created_at", "2021-04-20 17:28:57.779745"], ["updated_at", "2021-04-20 17:28:57.779745"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Theodore"], ["age", 59], ["created_at", "2021-04-20 17:28:57.787327"], ["updated_at", "2021-04-20 17:28:57.787327"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Create (0.7ms)[0m  [1m[32mINSERT INTO "locations" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Cantonica"], ["created_at", "2021-04-20 17:28:57.806798"], ["updated_at", "2021-04-20 17:28:57.806798"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Create (0.4ms)[0m  [1m[32mINSERT INTO "locations" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Hoth"], ["created_at", "2021-04-20 17:28:57.819112"], ["updated_at", "2021-04-20 17:28:57.819112"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mVacation Create (0.8ms)[0m  [1m[32mINSERT INTO "vacations" ("title", "date", "note", "user_id", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Ego Dominus Tuus"], ["date", "2021-04-15 00:00:00"], ["note", "Breaded fried chicken with waffles, and a side of maple syrup."], ["user_id", 1], ["location_id", 1], ["created_at", "2021-04-20 17:28:57.871515"], ["updated_at", "2021-04-20 17:28:57.871515"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mVacation Create (0.4ms)[0m  [1m[32mINSERT INTO "vacations" ("title", "date", "note", "user_id", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "To Your Scattered Bodies Go"], ["date", "2021-04-02 00:00:00"], ["note", "Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant."], ["user_id", 1], ["location_id", 2], ["created_at", "2021-04-20 17:28:57.888578"], ["updated_at", "2021-04-20 17:28:57.888578"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacation Load (0.2ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDay Create (0.6ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Monday"], ["forecast", "Partly Cloudy but Warm"], ["activity", "Mountain Biking"], ["vacation_id", 1], ["created_at", "2021-04-20 17:28:57.906143"], ["updated_at", "2021-04-20 17:28:57.906143"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mVacation Load (0.3ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDay Create (0.6ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tuesday"], ["forecast", "Sunny and Humid"], ["activity", "Hiking"], ["vacation_id", 2], ["created_at", "2021-04-20 17:28:57.919932"], ["updated_at", "2021-04-20 17:28:57.919932"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
