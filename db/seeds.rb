@@ -27,8 +27,8 @@ location2 = Location.create(name: Faker::Movies::StarWars.planet)
 # - t.integer :userId
 # - t.integer :locationId
 
-vacation1 = Vacation.create(title: Faker::Book.title, date: Faker::Date.between(from: '2021-04-01', to: '2021-06-01'), day: Faker::Number.between(from: 1, to: 10), note: Faker::Food.description, user_id: 1, location_id: 1)
-vacation2 = Vacation.create(title: Faker::Book.title, date: Faker::Date.between(from: '2021-04-01', to: '2021-06-01'), day: Faker::Number.between(from: 1, to: 10), note: Faker::Food.description, user_id: 1, location_id: 2)
+vacation1 = Vacation.create(title: Faker::Book.title, start_date: Faker::Date.between(from: '2021-04-01', to: '2021-04-05'), end_date: Faker::Date.between(from: '2021-04-06', to: '2021-04-09'), day: Faker::Number.between(from: 1, to: 10), note: Faker::Food.description, user_id: 1, location_id: 1)
+vacation2 = Vacation.create(title: Faker::Book.title, start_date: Faker::Date.between(from: '2021-05-01', to: '2021-05-05'), end_date: Faker::Date.between(from: '2021-05-06', to: '2021-05-09'), day: Faker::Number.between(from: 1, to: 10), note: Faker::Food.description, user_id: 1, location_id: 2)
 
 # days
 # -t.string :name
