@@ -642,3 +642,18 @@ Migrating to CreateDays (20210419164848)
   [1m[36mVacation Load (0.3ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations" WHERE "vacations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   [1m[36mDay Create (0.2ms)[0m  [1m[32mINSERT INTO "days" ("name", "forecast", "activity", "vacation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tuesday"], ["forecast", "Sunny and Humid"], ["activity", "Hiking"], ["vacation_id", 2], ["created_at", "2021-04-20 17:33:14.210673"], ["updated_at", "2021-04-20 17:33:14.210673"]]
   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/vacations" for ::1 at 2021-04-20 13:33:58 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by VacationsController#index as HTML
+  [1m[36mVacation Load (0.6ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations"[0m
+  ↳ app/controllers/vacations_controller.rb:4:in `index'
+Completed 200 OK in 296ms (Views: 13.6ms | ActiveRecord: 266.8ms | Allocations: 11131)
+
+
+Started GET "/vacations" for ::1 at 2021-04-20 13:34:09 -0400
+Processing by VacationsController#index as */*
+  [1m[36mVacation Load (0.9ms)[0m  [1m[34mSELECT "vacations".* FROM "vacations"[0m
+  ↳ app/controllers/vacations_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.9ms | Allocations: 956)
+
+
