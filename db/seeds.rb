@@ -10,8 +10,8 @@
 # - name
 # - age
 
-user1 = User.create(name: Faker::Name.first_name, age: Faker::Number.between(from: 18, to: 99))
-user2 = User.create(name: Faker::Name.first_name, age: Faker::Number.between(from: 18, to: 99))
+user1 = User.create(name: Faker::Name.first_name, age: Faker::Number.between(from: 18, to: 99), username: "hello", password: "hello")
+user2 = User.create(name: Faker::Name.first_name, age: Faker::Number.between(from: 18, to: 99), username: "test", password: "test")
 
 # locations
 # - name
