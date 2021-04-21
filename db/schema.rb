@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2021_04_19_164848) do
 
   create_table "vacations", force: :cascade do |t|
     t.string "title"
+    t.datetime "day"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "day"
     t.string "note"
     t.integer "user_id"
     t.integer "location_id"
