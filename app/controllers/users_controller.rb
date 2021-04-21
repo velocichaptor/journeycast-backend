@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-
+        
         render json: @user
     end
 
@@ -37,6 +37,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :age)
+        params.require(:user).permit(:name, :age, :username, :password)
     end
 end
