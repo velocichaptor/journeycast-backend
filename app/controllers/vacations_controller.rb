@@ -6,9 +6,8 @@ class VacationsController < ApplicationController
 
     def show
         @vacation = Vacation.find(params[:id])
-        render json: @vacation
+        render json: @vacation.to_json
     end    
-
 
     def new
         @vacation = Vacation.new
