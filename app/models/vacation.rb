@@ -3,6 +3,12 @@ class Vacation < ApplicationRecord
     belongs_to :location
     has_many :days
 
+    def self.vacation_array_to_json(vacations)
+        vacations.map do |vacation|
+            vacation.to_json
+        end 
+    end 
+
     def to_json 
         {
             id: self.id,

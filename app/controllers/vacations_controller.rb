@@ -1,7 +1,7 @@
 class VacationsController < ApplicationController
     def index
         @vacations = Vacation.all
-        render json: @vacations
+        render json: Vacation.vacation_array_to_json(@vacations)
     end    
 
     def show
