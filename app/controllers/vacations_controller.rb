@@ -16,8 +16,9 @@ class VacationsController < ApplicationController
     end
 
     def create
+        
         @vacation = Vacation.create(vacation_params)
-
+        # byebug
         render json: @vacation
     end
 
